@@ -28,7 +28,7 @@ namespace elforo_be.Controllers
         }
 
         [Authorize]
-        [HttpGet("{email}")]
+        [HttpGet("email/{email}")]
         public IActionResult GetSubjectAsync(String email)
         {
 

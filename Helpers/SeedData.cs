@@ -51,12 +51,7 @@ namespace elforo_be.Helpers
             };
             
 
-            builder.Entity<User>()
-                .HasData(
-                    user, user2, user3
-                );
-
-                
+           
             var ihm = new Subject()
             {
                 Id = 1,
@@ -98,10 +93,33 @@ namespace elforo_be.Helpers
               
             };
 
-            builder.Entity<Subject>()
+            var beca1 = new Beca()
+            {
+                Id = 1,
+                NombreBeca = "Beca de movilidad",
+                Descripcion = "Beca de movilidad a Kansas para alumnos de Informatica del ultimo semestre"
+            };
+
+            var beca2 = new Beca()
+            {
+                Id = 2,
+                NombreBeca = "Beca de la UNI",
+                Descripcion = "Beca de la UNI, monto de 500000 para alumnos con promedio igual o mayor a 3.5"
+            };
+
+            var beca3 = new Beca()
+            {
+                Id = 3,
+                NombreBeca = "Beca Itaipu",
+                Descripcion = "Beca de Itaipu monto de 3500000 para alumnos de la promo del 2021 y 2022 y 2023"
+            };
+
+            builder.Entity<Beca>()
                 .HasData(
-                    a3, f3, dd, ihm
+                    beca1, beca2, beca3
                 );
+
+           
         
             
 

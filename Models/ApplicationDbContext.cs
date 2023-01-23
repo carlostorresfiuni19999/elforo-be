@@ -25,9 +25,27 @@ namespace elforo_be.Models
             seed.Seed();
         }
 
-        public DbSet<Subject>? Subjects {get; set;}
-        public DbSet<Question>? Questions {get; set;}
-        public DbSet<Comentario>? Comentarios {get; set;}
+        public DbSet<Subject>? Subjects 
+        {
+            get; 
+            set;
+        }
+        public DbSet<Question>? Questions 
+        {
+            get; 
+            set;
+        }
+        public DbSet<Comentario>? Comentarios 
+        {
+            get; 
+            set;
+        }
+
+        public DbSet<Beca>? Becas
+        {
+            get;
+            set;
+        }
 
     }
 }
