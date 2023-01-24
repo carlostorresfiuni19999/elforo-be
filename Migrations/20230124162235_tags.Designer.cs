@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 using elforo_be.Models;
@@ -11,9 +12,10 @@ using elforo_be.Models;
 namespace elforo_be.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230124162235_tags")]
+    partial class tags
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -290,10 +292,10 @@ namespace elforo_be.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "0317b93d-b17b-41f6-93a6-dc6280014b31",
+                            Id = "b5719520-8b53-48c7-9b13-98bbc79ef9b2",
                             AccessFailedCount = 0,
                             Apellido = "Torres",
-                            ConcurrencyStamp = "83c747aa-202b-4c3c-9b37-68b1afa32b70",
+                            ConcurrencyStamp = "d3f0b077-dfd4-4f09-b6f9-6e14dff2f3c8",
                             Email = "Carlos.Torres123@mail.com",
                             EmailConfirmed = false,
                             Ingreso = new DateOnly(2018, 7, 13),
@@ -301,18 +303,18 @@ namespace elforo_be.Migrations
                             Nacimiento = new DateOnly(1999, 7, 10),
                             Nombre = "Carlos",
                             NormalizedEmail = "CARLOS.TORRES@123MAIL.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAEHVNiFm/l+9pHSakopqMMWWItLQDoC65jLWrU9avhpLxwM9cRHjlI0ULi5gwAktYRQ==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEDaYNUfedloqxfoiOsXuzJ9PEO+wZqlGKAl5PCujdW9NfEu68kihBm4cnShM4w92NA==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "e3857895-917d-4e50-b79c-caedb1f9321a",
+                            SecurityStamp = "19172422-f628-428e-a946-547f07bbe6e7",
                             TwoFactorEnabled = false,
                             UserName = "Carlos.Torres123@mail.com"
                         },
                         new
                         {
-                            Id = "979d60d2-66b4-4448-9973-cf2bd4fbe505",
+                            Id = "3cfb9e51-a50e-41f4-b43c-b50a61095e7c",
                             AccessFailedCount = 0,
                             Apellido = "Trinidad Ocampos",
-                            ConcurrencyStamp = "bd7ffac4-c709-45b7-bf01-d462a1cca32a",
+                            ConcurrencyStamp = "c086ac03-52aa-4f23-85b1-7b99797de23e",
                             Email = "Abel.Trinidad123@mail.com",
                             EmailConfirmed = false,
                             Ingreso = new DateOnly(2019, 7, 15),
@@ -320,17 +322,17 @@ namespace elforo_be.Migrations
                             Nacimiento = new DateOnly(2000, 1, 1),
                             Nombre = "Demetrio Abel",
                             NormalizedEmail = "ABEL.TRINIDAD123@MAIL.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAECaSi1NLKyaVE+Lgtk4ZiAtiaWmVEJHgu/rQFnXFqQfUT1mGjklIRLvELbQJRxtaMg==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEC+jYn+hQuekRQ0fO7m5CKkMnhjw/Y2k8MHAGJU4TvjdfdxIl27Jhx5TNRbBRNxZFg==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "d22a2a47-fc37-40eb-8a27-7693aed43809",
+                            SecurityStamp = "76e180a8-8b2f-4f7b-a27b-65443003f49a",
                             TwoFactorEnabled = false
                         },
                         new
                         {
-                            Id = "0df520bd-ddcd-4e99-a95c-6159eda7f187",
+                            Id = "8a57c250-bade-4c28-9704-a6b70306f321",
                             AccessFailedCount = 0,
                             Apellido = "Kikuchi Yamamoto",
-                            ConcurrencyStamp = "a26e1649-47be-4b0c-b1fc-7bab1d8cc278",
+                            ConcurrencyStamp = "e11674ad-b6b0-4b26-840d-726f109c14c3",
                             Email = "Erik.Kikuchi123@mail.com",
                             EmailConfirmed = false,
                             Ingreso = new DateOnly(2018, 7, 13),
@@ -338,9 +340,9 @@ namespace elforo_be.Migrations
                             Nacimiento = new DateOnly(1999, 1, 1),
                             Nombre = "Erik Kaito",
                             NormalizedEmail = "ERIK.KIKUCHI123@MAIL.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAED7B4wRuQeQ4C5todlB8GWVFdY1V87LBZWjvapwnuuwfsGUdrUbjrgVYknm7kKVKOQ==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEOmhxyNDOBt3cpMKjQl8tYIBqZ+YVKW1psp/E8Ks0TSH4pwijTMr3/wAXvtROqbU5Q==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "b9ce8068-2049-401e-b1d9-77a449f28f25",
+                            SecurityStamp = "de93c605-11c5-4851-8055-1f293432adfa",
                             TwoFactorEnabled = false
                         });
                 });

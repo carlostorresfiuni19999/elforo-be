@@ -5,7 +5,7 @@ namespace elforo_be.Models.ent
         public int Id {get; set;}
         public DateOnly Date {get; set;}
         public bool Anonymous {get; set;}
-        public List<String>? Tags {get; set;}
+        public List<Tag>? Tags {get; set;}
         public User? Person {get; set;}
         public int UserId {get; set; }
         public List<Comentario>? Comments {get; set;}
