@@ -13,8 +13,8 @@ using elforo_be.Models;
 namespace elforo_be.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20230119133434_saveSubjects")]
-    partial class saveSubjects
+    [Migration("20230124013742_seed")]
+    partial class seed
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -24,6 +24,45 @@ namespace elforo_be.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 63);
 
             NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
+
+            modelBuilder.Entity("elforo_be.Models.ent.Beca", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Descripcion")
+                        .HasColumnType("text");
+
+                    b.Property<string>("NombreBeca")
+                        .HasColumnType("text");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Becas");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Descripcion = "Beca disponibles para alumnos con promedio igual o mayor a 3.5",
+                            NombreBeca = "Beca de la UNI"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Descripcion = "Beca de movilidad a Kansas para alumnos del ultimo semestre",
+                            NombreBeca = "Beca de movilidad"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Descripcion = "Monto de 2500000, para alumnos de la promo 2022 y 2023",
+                            NombreBeca = "Beca de Itaipu"
+                        });
+                });
 
             modelBuilder.Entity("elforo_be.Models.ent.Comentario", b =>
                 {
@@ -109,6 +148,44 @@ namespace elforo_be.Migrations
                     b.HasIndex("UserId");
 
                     b.ToTable("Subjects");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Name = "Interaccion Hombre Maquina",
+                            PF = 59,
+                            PP = 71,
+                            Score = 1,
+                            Year = new DateOnly(2022, 12, 21)
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Name = "Analisis Matematico III",
+                            PF = 91,
+                            PP = 80,
+                            Score = 5,
+                            Year = new DateOnly(2022, 12, 21)
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Name = "Fisica III",
+                            PF = 82,
+                            PP = 95,
+                            Score = 4,
+                            Year = new DateOnly(2022, 12, 23)
+                        },
+                        new
+                        {
+                            Id = 4,
+                            Name = "Diseño Digital",
+                            PF = 73,
+                            PP = 81,
+                            Score = 3,
+                            Year = new DateOnly(2023, 1, 10)
+                        });
                 });
 
             modelBuilder.Entity("elforo_be.Models.ent.User", b =>
@@ -192,10 +269,10 @@ namespace elforo_be.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "82667594-5cd5-4cd3-91f0-74241feec1af",
+                            Id = "9318c65e-ec01-460d-a951-2a1efdbef3ae",
                             AccessFailedCount = 0,
                             Apellido = "Torres",
-                            ConcurrencyStamp = "2c4cbe12-e454-4f1b-9c34-de4ac3b3a024",
+                            ConcurrencyStamp = "37165c4c-66e7-484c-8d5b-6423ae6b3c40",
                             Email = "Carlos.Torres123@mail.com",
                             EmailConfirmed = false,
                             Ingreso = new DateOnly(2018, 7, 13),
@@ -203,18 +280,18 @@ namespace elforo_be.Migrations
                             Nacimiento = new DateOnly(1999, 7, 10),
                             Nombre = "Carlos",
                             NormalizedEmail = "CARLOS.TORRES@123MAIL.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAECbZFYO5sUofHuAR32REfJwD8+2/fd7LUVKRfDGo/d/Wpa/8JV1e3OT7wJ3UaCi5Gw==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEP0Ouno8bznk0bCySfk/YJ4iUW/458SZgrz8oagpaYNorRwrT9v6tJBaE/Dn0FRlhQ==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "e7697931-cd1e-484a-8e11-e033505510bb",
+                            SecurityStamp = "515476f0-952b-4ed7-b126-9612908555e7",
                             TwoFactorEnabled = false,
                             UserName = "Carlos.Torres123@mail.com"
                         },
                         new
                         {
-                            Id = "1ddf8687-cf58-47b0-a794-0ed30eb1d025",
+                            Id = "543045f8-001e-419a-8820-7a197d9d7cce",
                             AccessFailedCount = 0,
                             Apellido = "Trinidad Ocampos",
-                            ConcurrencyStamp = "8907b281-eb2e-4c78-b56e-f44889f24bf0",
+                            ConcurrencyStamp = "1f63731e-be83-473e-8de0-0bd312d474ef",
                             Email = "Abel.Trinidad123@mail.com",
                             EmailConfirmed = false,
                             Ingreso = new DateOnly(2019, 7, 15),
@@ -222,16 +299,17 @@ namespace elforo_be.Migrations
                             Nacimiento = new DateOnly(2000, 1, 1),
                             Nombre = "Demetrio Abel",
                             NormalizedEmail = "ABEL.TRINIDAD123@MAIL.COM",
+                            PasswordHash = "AQAAAAEAACcQAAAAEFuJ98OQs+GqwIaGITe5CI6VvkHmXRUSn7Hj9aPG7o8fs/vPwqwZWu3q+MmhqPOE+Q==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "2c5ba807-8603-4555-a4d0-ef015b2598d0",
+                            SecurityStamp = "fe749019-396a-433b-b565-13d7c0653f22",
                             TwoFactorEnabled = false
                         },
                         new
                         {
-                            Id = "16d55e1f-fc90-4ad4-b070-739b4c97e26a",
+                            Id = "d93d0352-ee00-48c7-81f7-4d5661f9bb41",
                             AccessFailedCount = 0,
                             Apellido = "Kikuchi Yamamoto",
-                            ConcurrencyStamp = "5e9b87ec-a2c1-4385-a57c-45c8d6c20b08",
+                            ConcurrencyStamp = "3028c3fa-6476-437f-bc03-f57ba5a60ae7",
                             Email = "Erik.Kikuchi123@mail.com",
                             EmailConfirmed = false,
                             Ingreso = new DateOnly(2018, 7, 13),
@@ -239,8 +317,9 @@ namespace elforo_be.Migrations
                             Nacimiento = new DateOnly(1999, 1, 1),
                             Nombre = "Erik Kaito",
                             NormalizedEmail = "ERIK.KIKUCHI123@MAIL.COM",
+                            PasswordHash = "AQAAAAEAACcQAAAAEH5sBUn4YhuI1zbhM/qKjGLtZkbJ93IrRTZjR2BfqGhn8wPTI07Bg3Hoqp5EXX5vrQ==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "735857e4-f79b-4ba1-ba3e-f13d86d474ea",
+                            SecurityStamp = "8274d075-efa3-48b0-9294-2ad67760d831",
                             TwoFactorEnabled = false
                         });
                 });

@@ -13,8 +13,8 @@ using elforo_be.Models;
 namespace elforo_be.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20230119125956_manyToManySubjectsUsers")]
-    partial class manyToManySubjectsUsers
+    [Migration("20230124012356_init")]
+    partial class init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -24,6 +24,25 @@ namespace elforo_be.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 63);
 
             NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
+
+            modelBuilder.Entity("elforo_be.Models.ent.Beca", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Descripcion")
+                        .HasColumnType("text");
+
+                    b.Property<string>("NombreBeca")
+                        .HasColumnType("text");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Becas");
+                });
 
             modelBuilder.Entity("elforo_be.Models.ent.Comentario", b =>
                 {
@@ -98,10 +117,15 @@ namespace elforo_be.Migrations
                     b.Property<int>("Score")
                         .HasColumnType("integer");
 
+                    b.Property<string>("UserId")
+                        .HasColumnType("text");
+
                     b.Property<DateOnly>("Year")
                         .HasColumnType("date");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("UserId");
 
                     b.ToTable("Subjects");
                 });
@@ -183,27 +207,6 @@ namespace elforo_be.Migrations
                         .HasDatabaseName("UserNameIndex");
 
                     b.ToTable("AspNetUsers", (string)null);
-
-                    b.HasData(
-                        new
-                        {
-                            Id = "2b4cf498-4a6e-4d0e-8f53-a8145e681452",
-                            AccessFailedCount = 0,
-                            Apellido = "Torres",
-                            ConcurrencyStamp = "840f2b93-fb0c-45fb-9896-c58746a5b2eb",
-                            Email = "Carlos.Torres123@mail.com",
-                            EmailConfirmed = false,
-                            Ingreso = new DateOnly(2018, 7, 13),
-                            LockoutEnabled = false,
-                            Nacimiento = new DateOnly(1999, 7, 10),
-                            Nombre = "Carlos",
-                            NormalizedEmail = "CARLOS.TORRES@123MAIL.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAEGQZHgdbCeL1jm+6wlqXwHXSAl/gXhFDi2VbuSviYyixk1SLBookUekBGut2qHBF3w==",
-                            PhoneNumberConfirmed = false,
-                            SecurityStamp = "db759471-209b-4112-ba42-26a10195162c",
-                            TwoFactorEnabled = false,
-                            UserName = "Carlos.Torres123@mail.com"
-                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
@@ -338,21 +341,6 @@ namespace elforo_be.Migrations
                     b.ToTable("AspNetUserTokens", (string)null);
                 });
 
-            modelBuilder.Entity("SubjectUser", b =>
-                {
-                    b.Property<string>("StudentsId")
-                        .HasColumnType("text");
-
-                    b.Property<int>("SubjectsId")
-                        .HasColumnType("integer");
-
-                    b.HasKey("StudentsId", "SubjectsId");
-
-                    b.HasIndex("SubjectsId");
-
-                    b.ToTable("SubjectUser");
-                });
-
             modelBuilder.Entity("elforo_be.Models.ent.Comentario", b =>
                 {
                     b.HasOne("elforo_be.Models.ent.Question", "Question")
@@ -375,6 +363,15 @@ namespace elforo_be.Migrations
                         .HasForeignKey("PersonId");
 
                     b.Navigation("Person");
+                });
+
+            modelBuilder.Entity("elforo_be.Models.ent.Subject", b =>
+                {
+                    b.HasOne("elforo_be.Models.ent.User", "User")
+                        .WithMany("Subjects")
+                        .HasForeignKey("UserId");
+
+                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -428,24 +425,14 @@ namespace elforo_be.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("SubjectUser", b =>
-                {
-                    b.HasOne("elforo_be.Models.ent.User", null)
-                        .WithMany()
-                        .HasForeignKey("StudentsId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("elforo_be.Models.ent.Subject", null)
-                        .WithMany()
-                        .HasForeignKey("SubjectsId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
             modelBuilder.Entity("elforo_be.Models.ent.Question", b =>
                 {
                     b.Navigation("Comments");
+                });
+
+            modelBuilder.Entity("elforo_be.Models.ent.User", b =>
+                {
+                    b.Navigation("Subjects");
                 });
 #pragma warning restore 612, 618
         }

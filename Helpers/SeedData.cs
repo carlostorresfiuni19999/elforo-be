@@ -40,6 +40,8 @@ namespace elforo_be.Helpers
                 Ingreso = new DateOnly(2019, 07, 15)
             };
 
+            user2.PasswordHash = hasher.HashPassword(user2, "Abel.Trinidad123");
+
             var user3 = new User()
             {
                 Email = "Erik.Kikuchi123@mail.com",
@@ -50,6 +52,7 @@ namespace elforo_be.Helpers
                 Ingreso = new DateOnly(2018, 07, 13)
             };
             
+            user3.PasswordHash = hasher.HashPassword(user3, "Erik.Kikuchi123");
 
            
             var ihm = new Subject()
@@ -93,34 +96,37 @@ namespace elforo_be.Helpers
               
             };
 
+           
             var beca1 = new Beca()
             {
                 Id = 1,
-                NombreBeca = "Beca de movilidad",
-                Descripcion = "Beca de movilidad a Kansas para alumnos de Informatica del ultimo semestre"
+                NombreBeca = "Beca de la UNI",
+                Descripcion = "Beca disponibles para alumnos con promedio igual o mayor a 3.5"
             };
 
             var beca2 = new Beca()
             {
-                Id = 2,
-                NombreBeca = "Beca de la UNI",
-                Descripcion = "Beca de la UNI, monto de 500000 para alumnos con promedio igual o mayor a 3.5"
+                Id = 2, 
+                NombreBeca = "Beca de movilidad",
+                Descripcion = "Beca de movilidad a Kansas para alumnos del ultimo semestre"
             };
 
             var beca3 = new Beca()
             {
                 Id = 3,
-                NombreBeca = "Beca Itaipu",
-                Descripcion = "Beca de Itaipu monto de 3500000 para alumnos de la promo del 2021 y 2022 y 2023"
+                NombreBeca = "Beca de Itaipu",
+                Descripcion = "Monto de 2500000, para alumnos de la promo 2022 y 2023"
             };
 
-            builder.Entity<Beca>()
-                .HasData(
-                    beca1, beca2, beca3
-                );
+            builder.Entity<User>()
+            .HasData(user, user2, user3);
 
-           
-        
+            builder.Entity<Beca>()
+            .HasData(beca1, beca2, beca3);
+
+            builder.Entity<Subject>()
+            .HasData(ihm, a3, f3, dd);
+
             
 
         }

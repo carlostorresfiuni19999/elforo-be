@@ -2,8 +2,9 @@ using elforo_be.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
-namespace elforo_be
+namespace elforo_be.Controllers
 {
+    [Authorize]
     [Route("api/[controller]")]
     public class BecasController : ControllerBase
     {
@@ -14,11 +15,15 @@ namespace elforo_be
             _db = db;
         }
 
-        [Authorize]
-        public  IActionResult getBecas()
+        [HttpGet]
+        public IActionResult GetAll()
         {
-            if( null == _db.Becas) return BadRequest();
-            return  Ok(_db.Becas);
-        } 
+            if(null == _db.Becas) 
+                return BadRequest();
+
+            return Ok(_db.Becas.ToList());
+        }
+
+
     }
 }
