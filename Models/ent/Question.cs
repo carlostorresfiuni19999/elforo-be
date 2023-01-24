@@ -7,6 +7,8 @@ namespace elforo_be.Models.ent
         public bool Anonymous {get; set;}
         public List<String>? Tags {get; set;}
         public User? Person {get; set;}
+        public int UserId {get; set; }
         public List<Comentario>? Comments {get; set;}
+        public String? Ask {get; set; }
     }
 }

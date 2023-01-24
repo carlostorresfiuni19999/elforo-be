@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace elforo_be.Controllers
 {
+    [Route("api/[controller]")]
     public class QuestionsController : ControllerBase
     {
         private readonly ApplicationDbContext _db;

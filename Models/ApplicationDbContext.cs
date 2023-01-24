@@ -15,7 +15,7 @@ namespace elforo_be.Models
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
-            SeedData(modelBuilder);
+           // SeedData(modelBuilder);
 
         }
 
