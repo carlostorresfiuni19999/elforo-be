@@ -22,6 +22,9 @@ namespace elforo_be.Controllers
             _userManager = userManager;
         }
 
+
+        [Route("page/{page}")]
+        [HttpGet]
         public IActionResult GetAll(int page)
         {
             if(_db.Questions == null) return BadRequest("Error en la consulta");
@@ -29,6 +32,8 @@ namespace elforo_be.Controllers
             return Ok( _mapper.Map<List<QuestionDTO>>(questionList));
         }
 
+        [Route("id/{id}")]
+        [HttpGet]
         public IActionResult GetQuestion(int id)
         {
             if(_db.Questions == null) return BadRequest("Error en la consulta");
@@ -40,7 +45,7 @@ namespace elforo_be.Controllers
 
 
 
-
+        [HttpPost]
         [Authorize]
         public async Task<IActionResult> PostQuestion(QuestionDTO dto)
         {
